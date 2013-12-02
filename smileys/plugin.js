@@ -259,11 +259,13 @@ tinymce.PluginManager.add('smileys', function (editor, url) {
     }
 
     editor.on("keyup", function (e) {
-        var each = tinymce.each, selection = editor.selection, node = selection.getNode();
-        if (node) {
-            each(concatArray(defaultSmileys), function (smiley) {
-                replaceAllMatches(smiley);
-            });
+        if (!editor.settings.auto_convert_smileys) {
+            var each = tinymce.each, selection = editor.selection, node = selection.getNode();
+            if (node) {
+                each(concatArray(defaultSmileys), function (smiley) {
+                    replaceAllMatches(smiley);
+                });
+            }
         }
     });
 
