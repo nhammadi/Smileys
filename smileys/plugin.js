@@ -29,14 +29,14 @@ tinymce.PluginManager.add('smileys', function (editor, url) {
                         ]
     ];
 
-    var smileys = editor.settings.smileys || defaultSmileys;
+    var smileys = editor.settings.smileys || defaultSmileys, fullSmileysList = editor.settings.extended_smileys ? smileys.concat(editor.settings.extended_smileys) : smileys;
 
     function getHtml() {
         var smileysHtml;
 
         smileysHtml = '<table role="presentation" class="mce-grid">';
 
-        tinymce.each(smileys, function (row) {
+        tinymce.each(fullSmileysList, function (row) {
             smileysHtml += '<tr>';
 
             tinymce.each(row, function (icon) {
@@ -261,8 +261,9 @@ tinymce.PluginManager.add('smileys', function (editor, url) {
     editor.on("keyup", function (e) {
         if (!editor.settings.auto_convert_smileys) {
             var each = tinymce.each, selection = editor.selection, node = selection.getNode();
+            console.log(fullSmileysList);
             if (node) {
-                each(concatArray(defaultSmileys), function (smiley) {
+                each(concatArray(fullSmileysList), function (smiley) {
                     replaceAllMatches(smiley);
                 });
             }
