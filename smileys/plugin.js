@@ -16,7 +16,7 @@ tinymce.PluginManager.add('smileys', function (editor, url) {
                             { shortcut: '^_^', url: url + '/img/kiki.png', title: 'kiki' },
                             { shortcut: ':-*', url: url + '/img/kiss.png', title: 'kiss' },
                             { shortcut: ':v', url: url + '/img/pacman.png', title: 'pacman' },
-                            { shortcut: '<(“)', url: url + '/img/penguin.gif', title: 'penguin' }
+                            { shortcut: '<(ï¿½)', url: url + '/img/penguin.gif', title: 'penguin' }
                         ],
                         [
                             { shortcut: ':|]', url: url + '/img/robot.gif', title: 'robot' },
@@ -261,7 +261,6 @@ tinymce.PluginManager.add('smileys', function (editor, url) {
     editor.on("keyup", function (e) {
         if (!editor.settings.auto_convert_smileys) {
             var each = tinymce.each, selection = editor.selection, node = selection.getNode();
-            console.log(fullSmileysList);
             if (node) {
                 each(concatArray(fullSmileysList), function (smiley) {
                     replaceAllMatches(smiley);
