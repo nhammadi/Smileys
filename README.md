@@ -72,5 +72,5 @@ You can even extend the default smileys list by your own by adding the extended_
 ```
 if you want to configure multiple shortcuts for the same smiley icon, you have to provide them as an array like this:
 ```js
-          { shortcut: [':-)',':)'], url: 'http://www.fbsmileys.com/wp-content/emos/smile.png', title: 'smile' }
+  { shortcut: [':-)',':)'], url: 'http://www.fbsmileys.com/wp-content/emos/smile.png', title: 'smile' }
 ```
