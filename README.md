@@ -45,6 +45,7 @@ You can even extend the default smileys list by your own by adding the extended_
 #### Features 
 - The user can override the default smileys icons by his own in the tinyMCE init function
 - Convert smileys shortcuts to the appropriate icons instantly
+- You can add multiple shortcuts for the same emoticon
 
 ####Initialization Example
 
@@ -68,4 +69,8 @@ You can even extend the default smileys list by your own by adding the extended_
       ]
     });
 </script>
+```
+if you want to configure multiple shortcuts for the same smiley icon, you have to provide them as an array like this:
+```js
+          { shortcut: [':-)',':)'], url: 'http://www.fbsmileys.com/wp-content/emos/smile.png', title: 'smile' }
 ```
