@@ -1,7 +1,7 @@
 tinymce.PluginManager.add('smileys', function (editor, url) {
     var defaultSmileys = [
                         [
-                            { shortcut: '(^^^)', url: url + '/img/shark.gif', title: 'shark' },
+                            { shortcut: ['(^^^)',';:)'], url: url + '/img/shark.gif', title: 'shark' },
                             { shortcut: 'O:)', url: url + '/img/angel.png', title: 'angel' },
                             { shortcut: 'o.O', url: url + '/img/confused.png', title: 'confused' },
                             { shortcut: '3:)', url: url + '/img/devil.png', title: 'devil' },
@@ -251,11 +251,22 @@ tinymce.PluginManager.add('smileys', function (editor, url) {
     }
 
     function replaceAllMatches(smiley) {
-        var node = editor.selection.getNode(), marker, text = smiley.shortcut.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        var each = tinymce.each, node = editor.selection.getNode(), marker, text;
+        if (typeof (smiley.shortcut) === 'string') {
+            text = smiley.shortcut.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 
-        marker = editor.dom.create('img', { "src": smiley.url, "title": smiley.title });
+            marker = editor.dom.create('img', { "src": smiley.url, "title": smiley.title });
 
-        return findAndReplaceDOMText(new RegExp(text, 'gi'), node, marker, false, editor.schema);
+            return findAndReplaceDOMText(new RegExp(text, 'gi'), node, marker, false, editor.schema);
+        }
+        else if (Array.isArray(smiley.shortcut)) {
+            each(smiley.shortcut, function(item) {
+
+                marker = editor.dom.create('img', { "src": smiley.url, "title": smiley.title });
+
+                return findAndReplaceDOMText(new RegExp(item.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"), 'gi'), node, marker, false, editor.schema);
+            });
+        }
     }
 
     editor.on("keyup", function (e) {
