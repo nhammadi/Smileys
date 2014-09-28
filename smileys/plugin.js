@@ -1,7 +1,7 @@
 tinymce.PluginManager.add('smileys', function (editor, url) {
     var defaultSmileys = [
                         [
-                            { shortcut: ['(^^^)',';:)'], url: url + '/img/shark.gif', title: 'shark' },
+                            { shortcut: '(^^^)', url: url + '/img/shark.gif', title: 'shark' },
                             { shortcut: 'O:)', url: url + '/img/angel.png', title: 'angel' },
                             { shortcut: 'o.O', url: url + '/img/confused.png', title: 'confused' },
                             { shortcut: '3:)', url: url + '/img/devil.png', title: 'devil' },
