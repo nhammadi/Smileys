@@ -259,7 +259,7 @@ tinymce.PluginManager.add('smileys', function (editor, url) {
     }
 
     editor.on("keyup", function (e) {
-        if (!editor.settings.auto_convert_smileys) {
+        if (!!editor.settings.auto_convert_smileys) {
             var each = tinymce.each, selection = editor.selection, node = selection.getNode();
             if (node) {
                 each(concatArray(fullSmileysList), function (smiley) {
