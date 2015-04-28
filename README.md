@@ -16,11 +16,11 @@ tinymce.init({
 });
 ```
 
-You can disable the auto-conversion of smileys by setting the auto_convert_smileys configuration option to false 
+The auto smileys conversion is disabled by default, so in order to enable it you have to set the auto_convert_smileys configuration option to true 
 
 ```js
 tinymce.init({
-    auto_convert_smileys: false
+    auto_convert_smileys: true
 });
 ```
 
